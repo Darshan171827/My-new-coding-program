@@ -1,0 +1,14 @@
+#include<stdio.h>
+#include<math.h>
+struct darshan{
+int num;
+};
+void printdetails(struct darshan *pen){
+  printf("%d",pen->num*pen->num);
+}
+int main(){
+  int num;
+  struct darshan pen;
+  scanf("%d",&pen.num);
+  printdetails(&pen);
+}
