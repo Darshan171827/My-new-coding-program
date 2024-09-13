@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+struct cal
+{
+ char *day;
+ int date;
+ char *event;
+};
+void create(struct cal list[],int index)
+{
+  char temp[50];
+  printf("Enter the day: ");
+  scanf("%s",temp);
+  list[index].day=(char *)malloc(strlen(temp)+1);
+  strcpy(list[index].day,temp);
+  printf("Enter the date: ");
+  scanf("%d",&list[index].date);
+  printf("Enter the event: ");
+  scanf("%s",temp);
+  list[index].event=(char *)malloc(strlen(temp)+1);
+  strcpy(list[index].event,temp);
+}
+void read(struct cal list[])
+{
+  int i;
+  for(i=0;i<7;i++)
+    {
+      printf("enter teh deatils of the day %d\n",i);
+      create(list,i);
+    }
+}
+void display(struct cal list[])
+{
+  int i;
+  printf("\n day\t date\t event\n");
+  for(i=0;i<7;i++)
+    {
+      printf("%s\t %d\t %s\n",list[i].day,list[i].date,list[i].event);
+    }
+}
+void main()
+{
+  struct cal list[7];
+  int i;
+  read(list);
+  display(list);
+  for(i=0;i<7;i++)
+    {
+      free(list[i].day);
+      free(list[i].event);
+    }
+}
